@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,11 +28,10 @@ const Login = () => {
         const user = userCredential.user;
         navigate("/", { replace: true });
         console.log(user);
+        setErrorMessage("");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        setErrorMessage(error.message);
       });
     setEmail("");
     setPassword("");
@@ -43,6 +43,13 @@ const Login = () => {
         <form className="Login__textbox p-5">
           <h2>Welcome back.. Login</h2>
           <p>It's great to have you back!</p>
+          <p
+            className={`text-danger text-center ${
+              errorMessage ? "p-3" : "p-0"
+            } Login__errorMessage`}
+          >
+            {errorMessage}
+          </p>
           <label className="mt-3">Email:</label>
           <input
             className="form-control mt-2"

@@ -12,10 +12,14 @@
     background-color: white;
 }
 .Login__image{
-    max-width: 400px;
+    max-width: 430px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 .Login__imagebox{
     object-fit: contain;
+}
+.Login__errorMessage{
+    background-color: rgb(249, 207, 191);
+    border-radius: 10px;
 }

@@ -25,11 +25,12 @@ const Home = () => {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
         navigate("/login", { replace: true });
       })
       .catch((error) => {
         // An error happened.
+        alert("Logout Failed");
+        console.log(error.message);
       });
   };
   return (
