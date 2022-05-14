@@ -13,10 +13,10 @@ export const getRunningMovies = async (n) => {
   try {
     const response = await fetch(URL, {
       method: "GET",
-      mode: "no-cors",
       headers: headers,
     });
-    return await response.json();
+    const result = await response.json();
+    console.log(result);
   } catch (error) {
     console.log(error);
     return [];

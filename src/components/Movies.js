@@ -5,7 +5,7 @@ const Movies = () => {
   return (
     <div>
       Movies
-      {/* {console.log(getRunningMovies(10))} */}
+      {console.log(getRunningMovies(10))}
     </div>
   );
 };
