@@ -1,0 +1,3 @@
+react-router-dom : Used to build routes for the web application and also has several navigating features.
+bootstrap: Bootstrap is a CSS library has a wide collection of Styling to use, leaving less struggle to apply basic styles.
+react-icons: React icons have a hue collection if Icons to use in our website. Just copy the name and use as component.
