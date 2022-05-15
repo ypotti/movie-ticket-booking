@@ -5,7 +5,7 @@ import { BiMoviePlay } from "react-icons/bi";
 
 const Bottombar = () => {
   return (
-    <div className="d-md-none d-flex justify-content-around p-3 bg-secondary ">
+    <div className="d-md-none d-flex justify-content-around p-3 bg-secondary Bottombar">
       <div>
         <MdSpaceDashboard />
         <Link to="/dashboard">Dashboard</Link>

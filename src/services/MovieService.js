@@ -15,8 +15,23 @@ export const getRunningMovies = async (n) => {
       method: "GET",
       headers: headers,
     });
-    const result = await response.json();
-    console.log(result);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getFilmShowTimes = async (n, id, date) => {
+  const URL = `https://api-gate2.movieglu.com/filmShowTimes/?n=${n}&film_id=${id}&date=${date}`;
+  try {
+    const response = await fetch(URL, {
+      method: "GET",
+      headers: headers,
+    });
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log(error);
     return [];

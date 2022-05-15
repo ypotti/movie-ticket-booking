@@ -23,3 +23,8 @@
     background-color: rgb(249, 207, 191);
     border-radius: 10px;
 }
+.Home__Rightbox{
+    height: 10vh;
+    background-color: #4460AA;
+    color: white;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Dashboard from "../components/Dashboard";
 import Movies from "../components/Movies";
@@ -11,11 +11,17 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+  const path = window.location.pathname;
+  const [page, setPage] = useState("");
+
+  useEffect(() => {
+    setPage(path.split("/")[1]);
+  }, [path]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/dashboard", { replace: true });
+        // navigate("/", { replace: true });
       } else {
         navigate("/login", { replace: true });
       }
@@ -35,17 +41,25 @@ const Home = () => {
   };
   return (
     <div className="Home d-flex flex-column justify-content-between">
-      <div>
-        <button className="btn btn-outline-primary" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
       <div className="d-flex">
-        <Sidebar />
-        <Outlet>
-          <Dashboard />
-          <Movies />
-        </Outlet>
+        <Sidebar setPage={setPage} page={page} />
+        <div className="w-100">
+          <div className="Home__Rightbox d-flex justify-content-between p-2 align-items-center ps-4">
+            <h1 className="text-capitalize Sidebar__title">{page}</h1>
+            <div>
+              <button
+                className="btn btn-outline-light me-5"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+          <Outlet>
+            <Dashboard />
+            <Movies />
+          </Outlet>
+        </div>
       </div>
       <Bottombar />
     </div>

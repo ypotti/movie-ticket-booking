@@ -1,0 +1,64 @@
+.MovieRow__image{
+    width: 100px;
+}
+.MovieRow{
+    border-bottom: 2px solid lightgray;
+}
+.Movies{
+    height: 90vh;
+    overflow-y: auto;
+    background-color: #F9F9F9;
+}
+.Bottombar{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.Sidebar{
+    height: 100vh;
+    background-color: white;
+    border-right: 2px solid lightgray;
+    color: white;
+}
+.Sidebar__Item{
+    padding: 1em;
+    color: #2c3e50;
+    cursor: pointer;
+}
+.Sidebar__Item:hover{
+    background-color: #f7f7f7;
+    color: #4460AA;
+}
+.Sidebar__icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1em;
+}
+.Sidebar__text{
+    text-decoration: none;
+    color: inherit;
+}
+.Sidebar__text:hover{
+    color: inherit;
+}
+.Sidebar__titlebox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3F599E;
+    color: white;
+    text-align: center;
+    margin-bottom: 1em;
+    height: 10vh;
+}
+.Sidebar__title{
+    font-size: 2rem;
+}
+.selected{
+    color: #4460AA;
+    font-weight: bold;
+    background-color: #f7f7f7;
+}
+.Dashboard{
+    background-color: #F9F9F9;
+}
