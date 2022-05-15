@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { getRunningMovies } from "../services/MovieService";
 import MovieRow from "./MovieRow";
-import { IoLanguageOutline, IoLocationOutline } from "react-icons/io5";
-import { MdLocalMovies } from "react-icons/md";
+import Filters from "./Filters";
+import { filterItems } from "../constants";
 
 const Movies = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [filters, setFilters] = useState({
-    language: "",
-    location: "",
-    genre: "",
-    sortBy: "",
+    language: "all",
+    location: "all",
+    genre: "all",
+    sortBy: "name",
   });
 
   useEffect(() => {
@@ -21,63 +21,16 @@ const Movies = () => {
 
   return (
     <div className="Movies bg-white d-flex flex-column align-items-center">
-      {console.log(filters)}
-      <div className="Movies__filters pe-3 pb-3">
-        <div>
-          <label>Language</label>
-          <div>
-            <IoLanguageOutline />
-            <select
-              onChange={(e) =>
-                setFilters({ ...filters, language: e.target.value })
-              }
-            >
-              <option selected value="all">
-                --All--
-              </option>
-              <option value="english">English</option>
-              <option value="telugu">Telugu</option>
-              <option value="spanish">spanish</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label>Location</label>
-          <div>
-            <IoLocationOutline />
-            <select
-              onChange={(e) =>
-                setFilters({ ...filters, location: e.target.value })
-              }
-            >
-              <option selected value="all">
-                --All--
-              </option>
-              <option value="cinema-1">Cinema-1</option>
-              <option value="cinema-5">Cinema-5</option>
-              <option value="cinema-4">Cinema-4</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label>Genre</label>
-          <div>
-            <MdLocalMovies />
-            <select
-              onChange={(e) =>
-                setFilters({ ...filters, genre: e.target.value })
-              }
-            >
-              <option selected value="all">
-                --All--
-              </option>
-              <option value="horror">Horror</option>
-              <option value="thriller">Thriller</option>
-              <option value="comedy">Comedy</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      <form className="Movies__filters pe-3 pb-3">
+        {filterItems.map((item) => (
+          <Filters
+            item={item}
+            key={item.id}
+            filters={filters}
+            setFilters={setFilters}
+          />
+        ))}
+      </form>
       <div className="Movies__container bg-white">
         <div className="Movies__containerheader d-flex align-items-center p-3">
           <div>Below are the search results</div>
@@ -85,12 +38,13 @@ const Movies = () => {
           <div>
             <select
               className="form-control"
+              value={filters.sortBy}
               onChange={(e) =>
                 setFilters({ ...filters, sortBy: e.target.value })
               }
             >
-              <option value="language">Language</option>
               <option value="name">Name</option>
+              <option value="language">Language</option>
             </select>
           </div>
         </div>
