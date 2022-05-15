@@ -14,13 +14,11 @@ const Movies = () => {
   });
 
   useEffect(() => {
-    getRunningMovies(5).then((data) => {
-      setMoviesList(data.films);
-    });
+    setMoviesList(getRunningMovies());
   }, []);
 
   return (
-    <div className="Movies bg-white d-flex flex-column align-items-center">
+    <div className="Movies bg-white d-flex flex-column align-items-center mb-5">
       <form className="Movies__filters pe-3 pb-3">
         {filterItems.map((item) => (
           <Filters
@@ -33,7 +31,7 @@ const Movies = () => {
       </form>
       <div className="Movies__container bg-white">
         <div className="Movies__containerheader d-flex align-items-center p-3">
-          <div>Below are the search results</div>
+          <div className="fw-bold">Search Results</div>
           <div className="ms-auto me-3 fw-bold">Sort by:</div>
           <div>
             <select
@@ -49,7 +47,7 @@ const Movies = () => {
           </div>
         </div>
         {moviesList.map((movie) => (
-          <MovieRow key={movie.film_id} data={movie} />
+          <MovieRow key={movie.filmId} data={movie} />
         ))}
       </div>
     </div>

@@ -28,3 +28,7 @@
     background-color: #4460AA;
     color: white;
 }
+.Home{
+    height: 100vh;
+    overflow: hidden;
+}

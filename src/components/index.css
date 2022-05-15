@@ -1,9 +1,4 @@
-.MovieRow__image{
-    width: 100px;
-}
-.MovieRow{
-    border-bottom: 2px solid lightgray;
-}
+
 .Movies{
     height: 90vh;
     overflow-y: auto;
@@ -114,4 +109,16 @@
     outline: none;
     color: #3F599E;
     background-color: transparent;
+}
+.show__text{
+    color: #3F599E;
+    font-weight: bold;
+    cursor: pointer;
+}
+.MovieRow__image{
+    width: 10rem;
+    margin-right: 1em;
+}
+.MovieRow{
+    border-bottom: 2px solid lightgray;
 }
