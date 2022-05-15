@@ -12,7 +12,7 @@ const Movies = () => {
   }, []);
 
   return (
-    <div className="Movies">
+    <div className="Movies bg-white">
       {moviesList.map((movie) => (
         <MovieRow key={movie.film_id} data={movie} />
       ))}

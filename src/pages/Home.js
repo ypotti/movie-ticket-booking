@@ -48,7 +48,7 @@ const Home = () => {
             <h1 className="text-capitalize Sidebar__title">{page}</h1>
             <div>
               <button
-                className="btn btn-outline-light me-5"
+                className="btn btn-outline-light me-4"
                 onClick={handleLogout}
               >
                 Logout
@@ -61,7 +61,7 @@ const Home = () => {
           </Outlet>
         </div>
       </div>
-      <Bottombar />
+      <Bottombar setPage={setPage} page={page} />
     </div>
   );
 };
