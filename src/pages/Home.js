@@ -15,7 +15,11 @@ const Home = () => {
   const [page, setPage] = useState("");
 
   useEffect(() => {
-    setPage(path.split("/")[1]);
+    const route = path.split("/")[1];
+    if (!route) {
+      navigate("/dashboard");
+    }
+    setPage(route);
   }, [path]);
 
   useEffect(() => {

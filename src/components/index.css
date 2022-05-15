@@ -63,3 +63,18 @@
 .Dashboard{
     background-color: #F9F9F9;
 }
+.Movies__container{
+    width: 100%;
+    max-width: 900px;
+}
+.Movies__filters{
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 2em;
+}
+.Movies__containerheader{
+    background-color: #E6E6F2;
+}
