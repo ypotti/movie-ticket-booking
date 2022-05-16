@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 import { BiCameraMovie } from "react-icons/bi";
 
-const MovieRow = ({ data }) => {
+const MovieRow = ({ data, setSelectedMovie }) => {
   const [showMore, setShowMore] = useState(false);
 
   return (
@@ -60,11 +60,21 @@ const MovieRow = ({ data }) => {
           ))}
         </div>
         <div className="d-md-none mt-auto mb-3">
-          <button className=" btn btn-secondary">View Details</button>
+          <button
+            className=" btn btn-secondary"
+            onClick={() => setSelectedMovie(data)}
+          >
+            View Details
+          </button>
         </div>
       </div>
       <div className="d-none d-md-block ms-auto align-self-end">
-        <button className="btn btn-secondary">View Details</button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => setSelectedMovie(data)}
+        >
+          View Details
+        </button>
       </div>
     </div>
   );

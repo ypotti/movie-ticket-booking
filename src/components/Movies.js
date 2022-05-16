@@ -4,10 +4,12 @@ import MovieRow from "./MovieRow";
 import Filters from "./Filters";
 import { filterItems } from "../constants";
 import noConnection from "../assets/no-connection.png";
+import BookingPage from "./BookingPage";
 
 const Movies = () => {
   const [allMoviesList, setAllMoviesList] = useState([]);
   const [moviesList, setMoviesList] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const [filters, setFilters] = useState({
     language: "all",
     location: "all",
@@ -85,12 +87,22 @@ const Movies = () => {
           ) : (
             <div>
               {moviesList.map((movie) => (
-                <MovieRow key={movie.filmId} data={movie} />
+                <MovieRow
+                  key={movie.filmId}
+                  data={movie}
+                  setSelectedMovie={setSelectedMovie}
+                />
               ))}
             </div>
           )}
         </div>
       </div>
+      {selectedMovie && (
+        <BookingPage
+          setSelectedMovie={setSelectedMovie}
+          selectedMovie={selectedMovie}
+        />
+      )}
     </div>
   );
 };
