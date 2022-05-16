@@ -823,3 +823,221 @@ export const getGenres = () => {
 export const postBooking = (data) => {
   console.log(data);
 };
+
+// Get Upcomming Movies
+
+export const upcommingFilms = () => {
+  return [
+    {
+      film_id: 253705,
+      imdb_id: 1745960,
+      imdb_title_id: "tt1745960",
+      film_name: "Top Gun: Maverick",
+      other_titles: null,
+      release_dates: [
+        {
+          release_date: "2022-05-27",
+          notes: "IND",
+        },
+      ],
+      age_rating: [
+        {
+          rating: "U/A ",
+          age_rating_image:
+            "https://assets.movieglu.com/age_rating_logos/in/u/a.png",
+          age_advisory: "",
+        },
+      ],
+      film_trailer: "https://trailer.movieglu.com/253705_high_V3.mp4",
+      synopsis_long:
+        'After more than thirty years of service as one of the Navy\'s top aviators, Pete "Maverick" Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: "Rooster," the son of Maverick\'s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka "Goose".\n\n Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.',
+      images: {
+        poster: {
+          1: {
+            image_orientation: "portrait",
+            region: "IN",
+            medium: {
+              film_image: "https://image.movieglu.com/253705/IND_253705h0.jpg",
+              width: 239,
+              height: 300,
+            },
+          },
+        },
+        still: {
+          1: {
+            image_orientation: "landscape",
+            medium: {
+              film_image: "https://image.movieglu.com/253705/253705h2.jpg",
+              width: 300,
+              height: 200,
+            },
+          },
+        },
+      },
+    },
+    {
+      film_id: 297543,
+      imdb_id: 6455162,
+      imdb_title_id: "tt6455162",
+      film_name: "Bhool Bhulaiyaa 2",
+      other_titles: {
+        HI: "Bhool Bhulaiyaa 2",
+      },
+      release_dates: [
+        {
+          release_date: "2022-05-20",
+          notes: "IND",
+        },
+      ],
+      age_rating: [
+        {
+          rating: "0 ",
+          age_rating_image:
+            "https://assets.movieglu.com/age_rating_logos/in/uc.png",
+          age_advisory: "",
+        },
+      ],
+      film_trailer: null,
+      synopsis_long:
+        "Set within the sprawling halls of a haveli, Bhool Bhulaiyaa 2 is a horror movie that is a sequel to the 2007 movie of the same name.",
+      images: {
+        poster: {
+          1: {
+            image_orientation: "portrait",
+            region: "IN",
+            medium: {
+              film_image: "https://image.movieglu.com/297543/IND_297543h0.jpg",
+              width: 187,
+              height: 300,
+            },
+          },
+        },
+      },
+    },
+    {
+      film_id: 315779,
+      imdb_id: 13144110,
+      imdb_title_id: "tt13144110",
+      film_name: "Visithiran (Vichithiran)",
+      other_titles: {
+        TA: "Visithiran",
+      },
+      release_dates: [
+        {
+          release_date: "2022-05-20",
+          notes: "IND",
+        },
+      ],
+      age_rating: [
+        {
+          rating: "U/A ",
+          age_rating_image:
+            "https://assets.movieglu.com/age_rating_logos/in/u/a.png",
+          age_advisory: "",
+        },
+      ],
+      film_trailer: null,
+      synopsis_long: "",
+      images: {
+        poster: {
+          1: {
+            image_orientation: "portrait",
+            region: "IN",
+            medium: {
+              film_image: "https://image.movieglu.com/315779/IND_315779h0.jpg",
+              width: 185,
+              height: 300,
+            },
+          },
+        },
+      },
+    },
+    {
+      film_id: 306266,
+      imdb_id: 11318364,
+      imdb_title_id: "tt11318364",
+      film_name: "Belashuru",
+      other_titles: {
+        BE: "????????",
+      },
+      release_dates: [
+        {
+          release_date: "2022-05-20",
+          notes: "IND",
+        },
+      ],
+      age_rating: [
+        {
+          rating: "0 ",
+          age_rating_image:
+            "https://assets.movieglu.com/age_rating_logos/in/uc.png",
+          age_advisory: "",
+        },
+      ],
+      film_trailer: null,
+      synopsis_long:
+        "The story revolves around an elderly couple Biswanath Sarkar (Soumitra Chattopadhyay) and Arati Sarkar (Swatilekha Sengupta). It focuses on different relationships that exist within a family and the bond that parents, children and other members of the family share together.",
+      images: {
+        poster: {
+          1: {
+            image_orientation: "portrait",
+            region: "IN",
+            medium: {
+              film_image:
+                "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/belashuru-et00095543-15-03-2021-05-16-26.jpg",
+              width: 185,
+              height: 300,
+            },
+          },
+        },
+      },
+    },
+    {
+      film_id: 267244,
+      imdb_id: 8041270,
+      imdb_title_id: "tt8041270",
+      film_name: "Jurassic World Dominion",
+      other_titles: null,
+      release_dates: [
+        {
+          release_date: "2022-06-10",
+          notes: "IND",
+        },
+      ],
+      age_rating: [
+        {
+          rating: "U/A ",
+          age_rating_image:
+            "https://assets.movieglu.com/age_rating_logos/in/u/a.png",
+          age_advisory: "",
+        },
+      ],
+      film_trailer: "https://trailer.movieglu.com/267244_high_V2.mp4",
+      synopsis_long:
+        "From Jurassic World architect and director Colin Trevorrow, Dominion takes place four years after Isla Nublar has been destroyed. Dinosaurs now live - and hunt - alongside humans all over the world. This fragile balance will reshape the future and determine, once and for all, whether human beings are to remain the apex predators on a planet they now share with history's most fearsome creatures.",
+      images: {
+        poster: {
+          1: {
+            image_orientation: "portrait",
+            region: "IN",
+            medium: {
+              film_image: "https://image.movieglu.com/267244/IND_267244h0.jpg",
+              width: 190,
+              height: 300,
+            },
+          },
+        },
+        still: {
+          1: {
+            image_orientation: "landscape",
+            medium: {
+              film_image: "https://image.movieglu.com/267244/267244h2.jpg",
+              width: 300,
+              height: 200,
+            },
+          },
+        },
+      },
+    },
+  ];
+};
