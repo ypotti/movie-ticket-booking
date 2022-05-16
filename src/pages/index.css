@@ -6,6 +6,12 @@
     align-items: center;
     background-color: #F6F5F7;
 }
+@media screen and (max-width:768px){
+    .Login{
+        background-image: url(https://pngbackground.com/public/uploads/preview/movie-poster-arrow-background-download-11614144442v7fsqflilk.jpg);
+        background-size: cover;
+    }
+}
 .Login__card{
     display: flex;
     border-radius: 20px;

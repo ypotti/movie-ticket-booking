@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./index.css";
 import { BiCameraMovie } from "react-icons/bi";
+import Trailer from "./Trailer";
 
 const MovieRow = ({ data, setSelectedMovie }) => {
   const [showMore, setShowMore] = useState(false);
+  const [trailerURL, setTrailerURL] = useState(false);
 
   return (
     <div className="d-flex align-items-center  p-3 MovieRow">
@@ -16,11 +18,18 @@ const MovieRow = ({ data, setSelectedMovie }) => {
         <h4>
           {data.filmName}{" "}
           {data.filmTrailer && (
-            <div className="MovieRow__trailer mt-2">
+            <div
+              className="MovieRow__trailer mt-2"
+              onClick={() => setTrailerURL(data.filmTrailer)}
+            >
               <BiCameraMovie className="trailer__icon" />
-              <a href={data.filmTrailer} className="me-3 trailer-text">
-                Watch Trailer
-              </a>
+              <a className="me-3 trailer-text">Watch Trailer</a>
+              {trailerURL && (
+                <Trailer
+                  trailerURL={trailerURL}
+                  setTrailerURL={setTrailerURL}
+                />
+              )}
             </div>
           )}
         </h4>

@@ -168,3 +168,14 @@
     margin-left: 0.5em;
     cursor: pointer;
 }
+.Trailer{
+    position: absolute;
+    width: 100vw;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    background-color: #a2a2a238;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
