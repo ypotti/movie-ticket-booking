@@ -8,12 +8,14 @@ const Filter = ({ item, filters, setFilters }) => {
   }, [item]);
 
   const onOptionChange = (e) => {
-    if (item.id === "Language") {
-      setFilters({ ...filters, language: e.target.value });
-    } else if (item.id === "Location") {
-      setFilters({ ...filters, location: e.target.value });
+    const value = e.target.value;
+
+    if (item.id === "Location") {
+      setFilters({ ...filters, location: value });
+    } else if (item.id === "Language") {
+      setFilters({ ...filters, language: value });
     } else if (item.id === "Genre") {
-      setFilters({ ...filters, genre: e.target.value });
+      setFilters({ ...filters, genre: value });
     }
   };
 

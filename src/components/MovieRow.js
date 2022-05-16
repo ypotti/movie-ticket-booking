@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
+import { BiCameraMovie } from "react-icons/bi";
 
 const MovieRow = ({ data }) => {
   const [showMore, setShowMore] = useState(false);
@@ -11,13 +12,23 @@ const MovieRow = ({ data }) => {
         alt={data.filmName}
         className="MovieRow__image"
       />
-      <div className="w-50 align-self-start">
-        <h4>{data.filmName}</h4>
+      <div className="w-50 align-self-stretch d-flex flex-column">
+        <h4>
+          {data.filmName}{" "}
+          {data.filmTrailer && (
+            <div className="MovieRow__trailer mt-2">
+              <BiCameraMovie className="trailer__icon" />
+              <a href={data.filmTrailer} className="me-3 trailer-text">
+                Watch Trailer
+              </a>
+            </div>
+          )}
+        </h4>
         <div>Age-Rating: {data.ageRating}</div>
         <div>Language: {data.language}</div>
         <div>Genre: {data.Genre}</div>
         <div>Locations: {data.locations}</div>
-        <div>
+        <div className="d-none d-md-block">
           {`Cast: `}
           {data.cast.map((person, index) => {
             if (showMore) {
@@ -42,16 +53,18 @@ const MovieRow = ({ data }) => {
             </span>
           )}
         </div>
-        <div>
+        <div className="d-none d-md-block">
           {`Directors: `}
           {data.directors.map((person) => (
             <span key={person.director_id}>{`${person.director_name}, `} </span>
           ))}
         </div>
+        <div className="d-md-none mt-auto mb-3">
+          <button className=" btn btn-secondary">View Details</button>
+        </div>
       </div>
-      <div className=" ms-auto align-self-end">
-        {data.filmTrailer && <a href={data.filmTrailer}>Watch Trailer</a>}
-        <button className="ms-2 btn btn-secondary">View Details</button>
+      <div className="d-none d-md-block ms-auto align-self-end">
+        <button className="btn btn-secondary">View Details</button>
       </div>
     </div>
   );

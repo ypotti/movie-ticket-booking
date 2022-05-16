@@ -3,8 +3,10 @@ import { getRunningMovies } from "../services/MovieService";
 import MovieRow from "./MovieRow";
 import Filters from "./Filters";
 import { filterItems } from "../constants";
+import noConnection from "../assets/no-connection.png";
 
 const Movies = () => {
+  const [allMoviesList, setAllMoviesList] = useState([]);
   const [moviesList, setMoviesList] = useState([]);
   const [filters, setFilters] = useState({
     language: "all",
@@ -14,7 +16,29 @@ const Movies = () => {
   });
 
   useEffect(() => {
-    setMoviesList(getRunningMovies());
+    const { language, genre, sortBy } = filters;
+    if (language !== "all" && genre !== "all") {
+      setMoviesList(
+        allMoviesList.filter((movie) => {
+          return movie.language === language && movie.Genre === genre;
+        })
+      );
+    } else if (language === "all" && genre === "all") {
+      setMoviesList(allMoviesList);
+    } else if (language !== "all") {
+      setMoviesList(
+        allMoviesList.filter((movie) => movie.language === language)
+      );
+    } else if (genre !== "all") {
+      setMoviesList(allMoviesList.filter((movie) => movie.Genre === genre));
+    }
+  }, [filters]);
+
+  useEffect(() => {
+    const data = getRunningMovies();
+    setAllMoviesList(data);
+    setMoviesList(data);
+    setFilters(filters);
   }, []);
 
   return (
@@ -26,6 +50,8 @@ const Movies = () => {
             key={item.id}
             filters={filters}
             setFilters={setFilters}
+            allMoviesList={allMoviesList}
+            setMoviesList={setMoviesList}
           />
         ))}
       </form>
@@ -46,9 +72,24 @@ const Movies = () => {
             </select>
           </div>
         </div>
-        {moviesList.map((movie) => (
-          <MovieRow key={movie.filmId} data={movie} />
-        ))}
+        <div>
+          {moviesList.length === 0 ? (
+            <div className="d-flex align-items-center flex-column p-5">
+              <img
+                src={noConnection}
+                className="Movies__noResults mb-3"
+                alt="no-Connection"
+              />
+              <div className="fw-bold">No Results Found</div>
+            </div>
+          ) : (
+            <div>
+              {moviesList.map((movie) => (
+                <MovieRow key={movie.filmId} data={movie} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
