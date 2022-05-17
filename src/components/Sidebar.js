@@ -12,7 +12,7 @@ const Sidebar = ({ page, setPage }) => {
   };
 
   return (
-    <div className="d-none d-md-block  Sidebar col-2 shadow">
+    <div className="d-none d-md-block  Sidebar shadow">
       <div className="Sidebar__titlebox">
         <h1 className="p-2 Sidebar__title">MovieGLU</h1>
       </div>

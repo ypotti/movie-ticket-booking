@@ -14,8 +14,8 @@ const Bottombar = ({ page, setPage }) => {
   return (
     <div className="d-md-none d-flex bg-white Bottombar shadow">
       <div
-        className={`Sidebar__Item w-50 text-center ${
-          page === "dashboard" ? "selected" : ""
+        className={`Bottombar__Item w-50 text-center ${
+          page === "dashboard" ? "Bottombar__selected" : ""
         }`}
         onClick={() => navigateTo("dashboard")}
       >
@@ -23,8 +23,8 @@ const Bottombar = ({ page, setPage }) => {
         <span className="Sidebar__text">Dashboard</span>
       </div>
       <div
-        className={`Sidebar__Item w-50 text-center ${
-          page === "movies" ? "selected" : ""
+        className={`Bottombar__Item w-50 text-center ${
+          page === "movies" ? "Bottombar__selected" : ""
         }`}
         onClick={() => navigateTo("movies")}
       >

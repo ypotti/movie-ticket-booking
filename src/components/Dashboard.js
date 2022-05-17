@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   return (
     <div className="Dashboard">
-      <h1>Upcomming Movies</h1>
+      <h1 className="Dashboard__sideHeading mt-3 ms-3">Upcoming Movies</h1>
       {upcommingFilmsList.length > 1 && (
         <div className="d-flex Dashboard__MoviesBox col-12">
           {upcommingFilmsList.map((film) => (
@@ -27,8 +27,8 @@ const Dashboard = () => {
           ))}
         </div>
       )}
-      <div className="col-12 col-md-8">
-        <h1>Bookings</h1>
+      <div>
+        <h1 className="Dashboard__sideHeading mt-3 ms-3">Bookings</h1>
         <table className="table table-striped">
           <thead>
             <tr>

@@ -78,7 +78,7 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
         </div>
 
         <div className="BookingPage__box ps-4 pe-4 pb-4">
-          <div className="m-3 d-flex align-items-center col-7 col-md-3">
+          <div className="m-3 d-flex align-items-center col-8 col-md-3">
             <label className="sub_heading me-3">Date:</label>
             <input
               type="date"
