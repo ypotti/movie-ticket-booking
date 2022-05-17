@@ -7,7 +7,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     setUpcommingFilmsList(upcommingFilms());
-    setBookings(getBookings());
+    // setBookings(getBookings());
+    getBookings().then((data) => setBookings(data));
   }, []);
 
   return (

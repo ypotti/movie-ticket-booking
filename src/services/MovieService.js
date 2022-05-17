@@ -1048,90 +1048,16 @@ export const upcommingFilms = () => {
 };
 
 // get Bookings
-export const getBookings = () => {
-  return [
-    {
-      bookingId: 1,
-      filmId: 7772,
-      filmName: "Raiders of the Lost Ark",
-      locationId: 201,
-      name: "Cinema-1",
-      date: "2022-05-16",
-      ticketsCount: 5,
-      start_time: "11:20",
-    },
-    {
-      bookingId: 2,
-      filmId: 184126,
-      filmName: "The Martian",
-      locationId: 206,
-      name: "Cinema-4",
-      date: "2022-05-18",
-      ticketsCount: 2,
-      start_time: "13:20",
-    },
-    {
-      date: "2022-05-20",
-      filmId: 7772,
-      filmName: "Raiders of the Lost Ark",
-      locationId: 202,
-      name: "Cinema-2",
-      start_time: "17:00",
-      ticketsCount: 2,
-    },
-    {
-      date: "2022-05-21",
-      filmId: 1685,
-      filmName: "The Adventures of Priscilla",
-      locationId: 202,
-      name: "Cinema-2",
-      start_time: "17:00",
-      ticketsCount: "10",
-    },
-    {
-      date: "2022-05-22",
-      filmId: 4167,
-      filmName: "Woman in the Dunes",
-      locationId: 201,
-      name: "Cinema-1",
-      start_time: "11:20",
-      ticketsCount: 3,
-    },
-    {
-      date: "2022-05-21",
-      filmId: 4167,
-      filmName: "Woman in the Dunes",
-      locationId: 202,
-      name: "Cinema-2",
-      start_time: "15:30",
-      ticketsCount: 6,
-    },
-    {
-      date: "2022-05-20",
-      filmId: 21448,
-      filmName: "Three Kings",
-      locationId: 201,
-      name: "Cinema-1",
-      start_time: "15:30",
-      ticketsCount: 5,
-    },
-    {
-      date: "2022-05-28",
-      filmId: 6650,
-      filmName: "The English Patient",
-      locationId: 201,
-      name: "Cinema-1",
-      start_time: "12:00",
-      ticketsCount: 7,
-    },
-    {
-      date: "2022-05-29",
-      filmId: 3427,
-      filmName: "From Dusk Till Dawn",
-      locationId: 205,
-      name: "Cinema-5",
-      start_time: "17:05",
-      ticketsCount: 13,
-    },
-  ];
+export const getBookings = async () => {
+  const URL = "https://movie-ticket-booking-api.herokuapp.com/bookings";
+  try {
+    const response = await fetch(URL, {
+      method: "GET",
+    });
+    const data = await response.json();
+    // console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
