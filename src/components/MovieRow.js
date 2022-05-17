@@ -36,7 +36,7 @@ const MovieRow = ({ data, setSelectedMovie }) => {
         <div>Age-Rating: {data.ageRating}</div>
         <div>Language: {data.language}</div>
         <div>Genre: {data.Genre}</div>
-        <div>Locations: {data.locations}</div>
+        <div>Locations: {data.locations.length}</div>
         <div className="d-none d-md-block">
           {`Cast: `}
           {data.cast.map((person, index) => {

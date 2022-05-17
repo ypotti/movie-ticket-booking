@@ -98,7 +98,7 @@
     max-width: 900px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     padding-top: 2em;
     flex-wrap: wrap;
     padding: 1em;

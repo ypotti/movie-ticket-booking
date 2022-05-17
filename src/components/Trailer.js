@@ -9,9 +9,9 @@ const Trailer = ({ trailerURL, setTrailerURL }) => {
   return (
     <div className="Trailer">
       <div>
-        <video controls>
+        <iframe>
           <source src={trailerURL} />
-        </video>
+        </iframe>
         <button className="btn btn-danger" onClick={handleClick}>
           Close
         </button>

@@ -20,7 +20,7 @@ const Filter = ({ item, filters, setFilters }) => {
   };
 
   return (
-    <div className="Filters">
+    <div className="Filters me-2">
       <label className="Movies__filterLabel">{item.label}</label>
       <div className="Movies_filter_box">
         {item.icon}

@@ -14,26 +14,34 @@ const Movies = () => {
     language: "all",
     location: "all",
     genre: "all",
-    sortBy: "name",
+    sortBy: "none",
   });
 
   useEffect(() => {
-    const { language, genre, sortBy } = filters;
-    if (language !== "all" && genre !== "all") {
-      setMoviesList(
-        allMoviesList.filter((movie) => {
-          return movie.language === language && movie.Genre === genre;
-        })
-      );
-    } else if (language === "all" && genre === "all") {
-      setMoviesList(allMoviesList);
-    } else if (language !== "all") {
-      setMoviesList(
-        allMoviesList.filter((movie) => movie.language === language)
-      );
-    } else if (genre !== "all") {
-      setMoviesList(allMoviesList.filter((movie) => movie.Genre === genre));
+    const { language, genre, location, sortBy } = filters;
+    let currentList = [...allMoviesList];
+    if (language !== "all") {
+      currentList = currentList.filter((movie) => movie.language === language);
     }
+    if (genre !== "all") {
+      currentList = currentList.filter((movie) => movie.Genre === genre);
+    }
+    if (location !== "all") {
+      currentList = currentList.filter((movie) =>
+        movie.locations.includes(location)
+      );
+    }
+    if (sortBy === "name") {
+      currentList = currentList.sort((a, b) =>
+        a.filmName > b.filmName ? 1 : -1
+      );
+    }
+    if (sortBy === "language") {
+      currentList = currentList.sort((a, b) =>
+        a.language > b.language ? 1 : -1
+      );
+    }
+    setMoviesList(currentList);
   }, [filters]);
 
   useEffect(() => {
@@ -69,6 +77,9 @@ const Movies = () => {
                 setFilters({ ...filters, sortBy: e.target.value })
               }
             >
+              <option value="none" disabled>
+                None
+              </option>
               <option value="name">Name</option>
               <option value="language">Language</option>
             </select>

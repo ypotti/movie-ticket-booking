@@ -23,12 +23,9 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
 
   useEffect(() => {
     let data = getFilmShowTimes().cinemas;
-    if (filters.location !== "all") {
-      data = data.filter((cinema) => cinema.name === filters.location);
-    }
     setCinemaList(data);
     setSelectedCinema(data[0]);
-  }, []);
+  }, [filters.location]);
 
   const incrementTickets = () => {
     setTickets(tickets + 1);
@@ -80,12 +77,12 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
         </div>
 
         <div className="BookingPage__box ps-4 pe-4 pb-4">
-          <div className="m-3 d-flex align-items-center col-8 col-md-3">
+          <div className="m-3 d-flex align-items-center col-md-4">
             <label className="sub_heading me-3">Date:</label>
             <input
               type="date"
               value={selectedDate}
-              className="form-control text-center date__selector"
+              className="form-control text-center date__selector me-3"
               onChange={(e) => setSelectedDate(e.target.value)}
             />
           </div>

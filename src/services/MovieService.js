@@ -9,7 +9,7 @@ export const getRunningMovies = () => {
       ageRating: "PG",
       language: "English",
       Genre: "Action",
-      locations: 5,
+      locations: ["Cinema-1", "Cinema-2", "Cinema-4", "Cinema-5", "Cinema-6"],
       cast: [
         {
           cast_id: 775,
@@ -67,7 +67,7 @@ export const getRunningMovies = () => {
       ageRating: "12A",
       language: "English",
       Genre: "Mystery",
-      locations: 3,
+      locations: ["Cinema-3", "Cinema-4", "Cinema-6"],
       cast: [
         {
           cast_id: 1085,
@@ -117,7 +117,7 @@ export const getRunningMovies = () => {
       ageRating: "15",
       language: "Spanish",
       Genre: "Horror",
-      locations: 2,
+      locations: ["Cinema-1", "Cinema-3"],
       cast: [
         {
           cast_id: 123,
@@ -175,7 +175,7 @@ export const getRunningMovies = () => {
       ageRating: "18",
       language: "French",
       Genre: "Action",
-      locations: 5,
+      locations: ["Cinema-1", "Cinema-3", "Cinema-4", "Cinema-5", "Cinema-6"],
       cast: [
         {
           cast_id: 6024,
@@ -209,7 +209,14 @@ export const getRunningMovies = () => {
       ageRating: "15",
       language: "English",
       Genre: "Comedy",
-      locations: 6,
+      locations: [
+        "Cinema-1",
+        "Cinema-2",
+        "Cinema-3",
+        "Cinema-4",
+        "Cinema-5",
+        "Cinema-6",
+      ],
       cast: [
         {
           cast_id: 81,
@@ -247,7 +254,7 @@ export const getRunningMovies = () => {
       ageRating: "PG",
       language: "French",
       Genre: "Action",
-      locations: 1,
+      locations: ["Cinema-6"],
       cast: [
         {
           cast_id: 1357,
@@ -305,7 +312,7 @@ export const getRunningMovies = () => {
       ageRating: "15",
       language: "Dutch",
       Genre: "Comedy",
-      locations: 4,
+      locations: ["Cinema-1", "Cinema-4", "Cinema-5", "Cinema-6"],
       cast: [
         {
           cast_id: 1898,
@@ -344,7 +351,7 @@ export const getRunningMovies = () => {
       ageRating: "PG",
       language: "English",
       Genre: "Comedy",
-      locations: 4,
+      locations: ["Cinema-3", "Cinema-4", "Cinema-5", "Cinema-6"],
       cast: [
         {
           cast_id: 9363,
@@ -370,7 +377,7 @@ export const getRunningMovies = () => {
       ageRating: "PG",
       language: "Portuguese",
       Genre: "Action",
-      locations: 3,
+      locations: ["Cinema-1", "Cinema-4", "Cinema-6"],
       cast: [
         {
           cast_id: 5615,
@@ -428,7 +435,7 @@ export const getRunningMovies = () => {
       ageRating: "15",
       language: "English",
       Genre: "Horror",
-      locations: 5,
+      locations: ["Cinema-5"],
       cast: [
         {
           cast_id: 1738,
