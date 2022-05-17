@@ -4,6 +4,7 @@ import {
   AiFillPlusCircle,
   AiFillMinusCircle,
 } from "react-icons/ai";
+import Swal from "sweetalert2";
 import { getFilmShowTimes, postBooking } from "../services/MovieService";
 
 const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
@@ -25,7 +26,7 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
     let data = getFilmShowTimes().cinemas;
     setCinemaList(data);
     setSelectedCinema(data[0]);
-  }, [filters.location]);
+  }, []);
 
   const incrementTickets = () => {
     setTickets(tickets + 1);
@@ -46,6 +47,28 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
     }
   };
 
+  const fireAlert = (result) => {
+    let icon, title;
+    if (result === "success") {
+      icon = "success";
+      title = "Tickets Booked SuccessFully";
+    } else {
+      title = "Booking Failed. Try again.!";
+      icon = "error";
+    }
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+    });
+    Toast.fire({
+      icon: icon,
+      title: title,
+    });
+  };
+
   const reserveTickets = () => {
     if (runValidation()) {
       postBooking({
@@ -57,6 +80,9 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
         ticketsCount: tickets,
         start_time: selectedTime,
       });
+      // if(Api-success)
+      fireAlert("success");
+      // fireAlert("failure");
     }
   };
 
@@ -82,6 +108,7 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
             <input
               type="date"
               value={selectedDate}
+              minDate={new Date()}
               className="form-control text-center date__selector me-3"
               onChange={(e) => setSelectedDate(e.target.value)}
             />
