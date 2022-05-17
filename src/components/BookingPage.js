@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  AiFillCloseSquare,
+  AiOutlineClose,
   AiFillPlusCircle,
   AiFillMinusCircle,
 } from "react-icons/ai";
@@ -11,7 +11,15 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
   const [selectedCinema, setSelectedCinema] = useState({});
   const [tickets, setTickets] = useState(0);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(todaysDate());
+  const [showError, setShowError] = useState(false);
+
+  function todaysDate() {
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    return now.getFullYear() + "-" + month + "-" + day;
+  }
 
   useEffect(() => {
     const data = getFilmShowTimes().cinemas;
@@ -24,83 +32,124 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
   };
 
   const decrementTickets = () => {
-    setTickets(tickets - 1);
+    if (tickets - 1 >= 0) {
+      setTickets(tickets - 1);
+    }
+  };
+
+  const runValidation = () => {
+    if (tickets > 0 && selectedTime) {
+      console.log("ghjnk");
+      setShowError(false);
+      return true;
+    } else {
+      setShowError(true);
+    }
   };
 
   const reserveTickets = () => {
-    postBooking({
-      filmId: selectedMovie.filmId,
-      filmName: selectedMovie.filmName,
-      locationId: selectedCinema.locationId,
-      name: selectedCinema.name,
-      date: selectedDate,
-      ticketsCount: tickets,
-      start_time: selectedTime,
-    });
+    if (runValidation()) {
+      postBooking({
+        filmId: selectedMovie.filmId,
+        filmName: selectedMovie.filmName,
+        locationId: selectedCinema.locationId,
+        name: selectedCinema.name,
+        date: selectedDate,
+        ticketsCount: tickets,
+        start_time: selectedTime,
+      });
+    }
   };
 
   return (
     <div className="BookingPage">
       <div className="BookingPage__Modal">
-        <div className="d-flex justify-content-between align-items-center">
-          <h1>{selectedMovie.filmName}</h1>
-          <input
-            type="date"
-            onChange={(e) => setSelectedDate(e.target.value)}
-          />
-          <AiFillCloseSquare onClick={() => setSelectedMovie(null)} />
+        <div className="d-flex justify-content-between align-items-center BookingPage__header ">
+          <h1 className="BookingPage__heading text-uppercase">
+            <span className="text-capitalize d-none d-md-inline">Movie :</span>
+            {`  ${selectedMovie.filmName}`}
+          </h1>
+          <div className="BookingPage__close">
+            <AiOutlineClose
+              className="BookingPage__closeIcon"
+              onClick={() => setSelectedMovie(null)}
+            />
+          </div>
         </div>
-        <div>{/* movies hori slider*/}</div>
-        <div className="d-flex flex-row">
-          {cinemaList.map((cinema) => (
-            <div
-              key={cinema.locationId}
-              className="m-4 p-2 shadow border"
-              onClick={() => setSelectedCinema(cinema)}
-            >
-              <div>{cinema.name}</div>
-              <div>{cinema.address.address1}</div>
-              <div>{cinema.address.city}</div>
-              <div>{cinema.address.state}</div>
-              <div>{cinema.address.postalCode}</div>
-            </div>
-          ))}
-        </div>
-        {selectedCinema.times && (
-          <div className="d-flex flex-wrap ">
-            {selectedCinema.times.map((time) => (
+
+        <div className="BookingPage__box ps-4 pe-4 pb-4">
+          <div className="m-3 d-flex align-items-center col-7 col-md-3">
+            <label className="sub_heading me-3">Date:</label>
+            <input
+              type="date"
+              value={selectedDate.toString()}
+              className="form-control text-center date__selector"
+              onChange={(e) => setSelectedDate(e.target.value)}
+            />
+          </div>
+          <div className="ms-3 sub_heading mt-3">Locations</div>
+          <div className="d-flex flex-row cinema__Box">
+            {cinemaList.map((cinema) => (
               <div
-                key={time.start_time}
-                className="border p-3 m-3"
-                onClick={() => setSelectedTime(time.start_time)}
+                key={cinema.locationId}
+                className={`${
+                  selectedCinema.name === cinema.name ? "selected-box" : ""
+                } me-4 ms-4 mb-3 mt-2 p-2 cinema__address`}
+                onClick={() => setSelectedCinema(cinema)}
               >
-                {time.start_time}
+                <div>{cinema.name}</div>
+                <div>{cinema.address.address1}</div>
+                <div>{cinema.address.city}</div>
+                <div>{cinema.address.state}</div>
+                <div>{cinema.address.postalCode}</div>
               </div>
             ))}
           </div>
-        )}
-        <div className="m-4">
-          <div>Select Tickets:</div>
-          <div className="d-flex align-items-center">
-            <div className="d-flex align-items-center mr-5 m-3">
-              <AiFillPlusCircle
-                className="BookingPage_icon"
-                onClick={incrementTickets}
-              />
-              <input
-                type="text"
-                value={tickets}
-                className="form-control"
-                onChange={(e) => setTickets(e.target.value)}
-              />
-              <AiFillMinusCircle
-                className="BookingPage_icon"
-                onClick={decrementTickets}
-              />
+          <div className="ms-3 mt-3 sub_heading">Timings</div>
+          {selectedCinema.times && (
+            <div className="d-flex flex-wrap p-3 w-100">
+              {selectedCinema.times.map((time) => (
+                <div
+                  key={time.start_time}
+                  className={`${
+                    time.start_time === selectedTime ? "selected-box" : ""
+                  }  time__box`}
+                  onClick={() => setSelectedTime(time.start_time)}
+                >
+                  {time.start_time}
+                </div>
+              ))}
             </div>
-            <button className="btn btn-danger" onClick={reserveTickets}>
-              Book Now
-            </button>
+          )}
+          <div>
+            <div className="ms-3 mt-3 sub_heading">Tickets:</div>
+            <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center mr-5 m-3">
+                <AiFillMinusCircle
+                  className="BookingPage_icon"
+                  onClick={decrementTickets}
+                />
+                <input
+                  type="text"
+                  value={tickets}
+                  className="form-control Tickets__input"
+                  onChange={(e) => setTickets(e.target.value)}
+                />
+
+                <AiFillPlusCircle
+                  className="BookingPage_icon"
+                  onClick={incrementTickets}
+                />
+              </div>
+              <button className="btn btn-danger" onClick={reserveTickets}>
+                Book Now
+              </button>
+            </div>
+            {showError && (
+              <div className="text-danger p-2 ms-3 error">
+                Please select All Fields
+              </div>
+            )}
           </div>
         </div>
       </div>

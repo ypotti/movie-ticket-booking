@@ -149,7 +149,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #a2a2a238;
+    background-color: #a2a2a28e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,8 +157,11 @@
 .BookingPage__Modal{
     background-color: white;
     width: 90%;
-    max-width: 1000px;
     height: 80%;
+    max-width: 1000px;
+}
+.BookingPage__box{
+    height: 88%;
     overflow-y: auto;
 }
 
@@ -187,4 +190,67 @@
 .Dashboard__MovieImage{
     width: 200px;
     height: 300px;
+}
+.BookingPage__header{
+    background-color: #4460AA;
+    color: white;
+}
+
+.BookingPage__heading{
+    font-size: 1.2rem;
+    padding: 0em 0.8rem;
+}
+.BookingPage__close{
+    padding: 1em;
+    cursor: pointer;
+    align-self: stretch;
+    background-color: #4460AA;
+    display: flex;
+    align-items: center;
+}
+.BookingPage__closeIcon{
+    color: white;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.cinema__Box{
+    width: 100%;
+    overflow-x: auto;
+}
+.cinema__address{
+    width: 200px;
+    border: 1.5px solid rgb(149, 149, 149);
+    border-radius: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.time__box{
+    border: 1.5px solid rgb(149, 149, 149);
+    cursor: pointer;
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 10px;
+}
+.selected-box{
+    border: 2px solid #607dcb;
+    color: #4460AA;
+    font-weight: 400;
+    background-color: #445faa13;
+}
+.sub_heading{
+    color: #4E5C5B;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.Tickets__input{
+    width: 4rem !important;
+    text-align: center;
+}
+.date__selector{
+    cursor: pointer;
+}
+.error{
+    display: inline-block;
+    border-radius: 8px;
 }
