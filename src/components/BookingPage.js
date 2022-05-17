@@ -87,7 +87,12 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
                 className="BookingPage_icon"
                 onClick={incrementTickets}
               />
-              <input type="text" value={tickets} className="form-control" />
+              <input
+                type="text"
+                value={tickets}
+                className="form-control"
+                onChange={(e) => setTickets(e.target.value)}
+              />
               <AiFillMinusCircle
                 className="BookingPage_icon"
                 onClick={decrementTickets}

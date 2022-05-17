@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { upcommingFilms } from "../services/MovieService";
+import { upcommingFilms, getBookings } from "../services/MovieService";
 
 const Dashboard = () => {
   const [upcommingFilmsList, setUpcommingFilmsList] = useState([]);
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
     setUpcommingFilmsList(upcommingFilms());
+    setBookings(getBookings());
   }, []);
 
   return (
     <div className="Dashboard">
       <h1>Upcomming Movies</h1>
       {upcommingFilmsList.length > 1 && (
-        <div className="d-flex Dashboard__MoviesBox col-12 col-md-11">
+        <div className="d-flex Dashboard__MoviesBox col-12">
           {upcommingFilmsList.map((film) => (
             <div key={film.film_id} className="m-3">
               <img
@@ -25,7 +27,31 @@ const Dashboard = () => {
           ))}
         </div>
       )}
-      <div>{/* table */}</div>
+      <div className="col-12 col-md-8">
+        <h1>Bookings</h1>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Film Name</th>
+              <th>Cinema Name</th>
+              <th>Tickets</th>
+              <th>Start Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookings.map((booking, index) => (
+              <tr key={index}>
+                <td>{booking.date}</td>
+                <td>{booking.filmName}</td>
+                <td>{booking.name}</td>
+                <td>{booking.ticketsCount}</td>
+                <td>{booking.start_time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

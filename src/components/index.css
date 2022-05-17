@@ -56,7 +56,9 @@
     background-color: #F9F9F9;
 }
 .Dashboard{
-    background-color: #F9F9F9;
+    background-color: white;
+    height: 90vh;
+    overflow-y: auto;
 }
 .Movies__container{
     width: 100%;
@@ -180,6 +182,9 @@
     align-items: center;
 }
 .Dashboard__MoviesBox{
-    /* width:100vw; */
     overflow-x: auto;
+}
+.Dashboard__MovieImage{
+    width: 200px;
+    height: 300px;
 }
