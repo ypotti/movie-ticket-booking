@@ -15,6 +15,7 @@
     width: 100%;
     bottom: 0;
     border-top: 1px solid lightgray;
+    box-shadow: 2px -3px 10px #8a8a8a;
 }
 .Sidebar{
     height: 100vh;
@@ -74,8 +75,8 @@
 }
 .selected{
     color: #4460AA;
-    font-weight: bold;
     background-color: #F9F9F9;
+    border-left: 6px solid #4460AA;
 }
 .Dashboard{
     background-color: white;

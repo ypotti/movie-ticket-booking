@@ -12,7 +12,7 @@ const Bottombar = ({ page, setPage }) => {
   };
 
   return (
-    <div className="d-md-none d-flex bg-white Bottombar shadow">
+    <div className="d-md-none d-flex bg-white Bottombar">
       <div
         className={`Bottombar__Item w-50 text-center ${
           page === "dashboard" ? "Bottombar__selected" : ""

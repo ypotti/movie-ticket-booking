@@ -6,7 +6,7 @@ import {
 } from "react-icons/ai";
 import { getFilmShowTimes, postBooking } from "../services/MovieService";
 
-const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
+const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
   const [cinemaList, setCinemaList] = useState([]);
   const [selectedCinema, setSelectedCinema] = useState({});
   const [tickets, setTickets] = useState(0);
@@ -22,7 +22,10 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
   }
 
   useEffect(() => {
-    const data = getFilmShowTimes().cinemas;
+    let data = getFilmShowTimes().cinemas;
+    if (filters.location !== "all") {
+      data = data.filter((cinema) => cinema.name === filters.location);
+    }
     setCinemaList(data);
     setSelectedCinema(data[0]);
   }, []);
@@ -39,7 +42,6 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
 
   const runValidation = () => {
     if (tickets > 0 && selectedTime) {
-      console.log("ghjnk");
       setShowError(false);
       return true;
     } else {
@@ -82,7 +84,7 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
             <label className="sub_heading me-3">Date:</label>
             <input
               type="date"
-              value={selectedDate.toString()}
+              value={selectedDate}
               className="form-control text-center date__selector"
               onChange={(e) => setSelectedDate(e.target.value)}
             />

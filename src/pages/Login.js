@@ -37,6 +37,16 @@ const Login = () => {
     setPassword("");
   };
 
+  const handleCheck = (e) => {
+    if (e.target.checked) {
+      setEmail("admin@gmail.com");
+      setPassword("adminpwd");
+    } else {
+      setEmail("");
+      setPassword("");
+    }
+  };
+
   return (
     <div className="Login">
       <div className="Login__card shadow-lg m-3">
@@ -45,12 +55,13 @@ const Login = () => {
           <p>It's great to have you back!</p>
           <p
             className={`text-danger text-center ${
-              errorMessage ? "p-3" : "p-0"
+              errorMessage ? "p-2" : "p-0"
             } Login__errorMessage`}
           >
             {errorMessage}
           </p>
-          <label className="mt-3">Email:</label>
+
+          <label className="mt-1">Email:</label>
           <input
             className="form-control mt-2"
             placeholder="Enter Email"
@@ -65,9 +76,20 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
+          <div className="mt-3 mb- d-flex align-items-center">
+            <input
+              id="cred"
+              type="checkbox"
+              onChange={handleCheck}
+              className="me-2"
+            />
+            <label htmlFor="cred" className="Login__checkbox">
+              Use Demo Credentials
+            </label>
+          </div>
           <button
             type="submit"
-            className="btn btn-primary mt-4"
+            className="btn btn-primary mt-3"
             onClick={submitHandler}
           >
             Login

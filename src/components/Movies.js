@@ -99,6 +99,7 @@ const Movies = () => {
       </div>
       {selectedMovie && (
         <BookingPage
+          filters={filters}
           setSelectedMovie={setSelectedMovie}
           selectedMovie={selectedMovie}
         />
