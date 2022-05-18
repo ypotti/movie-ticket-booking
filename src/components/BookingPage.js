@@ -79,10 +79,16 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
         date: selectedDate,
         ticketsCount: tickets,
         start_time: selectedTime,
-      });
-      // if(Api-success)
-      fireAlert("success");
-      // fireAlert("failure");
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            fireAlert("success");
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+          fireAlert("failure");
+        });
     }
   };
 
@@ -108,7 +114,6 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
             <input
               type="date"
               value={selectedDate}
-              minDate={new Date()}
               className="form-control text-center date__selector me-3"
               onChange={(e) => setSelectedDate(e.target.value)}
             />

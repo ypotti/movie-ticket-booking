@@ -4,7 +4,7 @@ const Filter = ({ item, filters, setFilters }) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    setOptions(item.apiMethod());
+    item.apiMethod().then((data) => setOptions(data));
   }, [item]);
 
   const onOptionChange = (e) => {

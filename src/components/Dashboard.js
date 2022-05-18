@@ -6,8 +6,7 @@ const Dashboard = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    setUpcommingFilmsList(upcommingFilms());
-    // setBookings(getBookings());
+    upcommingFilms().then((data) => setUpcommingFilmsList(data));
     getBookings().then((data) => setBookings(data));
   }, []);
 

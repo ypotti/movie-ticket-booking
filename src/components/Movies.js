@@ -45,10 +45,11 @@ const Movies = () => {
   }, [filters]);
 
   useEffect(() => {
-    const data = getRunningMovies();
-    setAllMoviesList(data);
-    setMoviesList(data);
-    setFilters(filters);
+    getRunningMovies().then((data) => {
+      setAllMoviesList(data);
+      setMoviesList(data);
+      setFilters(filters);
+    });
   }, []);
 
   return (

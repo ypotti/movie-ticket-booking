@@ -10,6 +10,7 @@ const MovieRow = ({ data, setSelectedMovie }) => {
   return (
     <div className="d-flex align-items-center  p-3 MovieRow">
       <img
+        loading="lazy"
         src={data.filmImage}
         alt={data.filmName}
         className="MovieRow__image"
