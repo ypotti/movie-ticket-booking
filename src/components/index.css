@@ -208,7 +208,7 @@
     right: 0;
     top: 0;
     height: 100vh;
-    background-color: #a2a2a238;
+    background-color: #a2a2a2a8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -286,4 +286,24 @@
 }
 .Dashboard__sideHeading{
     font-size: 1.5rem;
+}
+.relative-div{
+    position: relative;
+}
+.Trailer__close{
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    padding: 0.5rem;
+    color: white;
+
+}
+.Trailer__close:hover{
+    background-color: white;
+    color: black;
+}
+.Trailer__closeIcon{
+    width: 1.5rem;
+    height: 1.5rem;
+    color: inherit;
 }

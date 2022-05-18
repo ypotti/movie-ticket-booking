@@ -1,20 +1,22 @@
 import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Trailer = ({ trailerURL, setTrailerURL }) => {
-  const handleClick = () => {
-    console.log("fcgjhbk");
+  const handleClick = (e) => {
+    e.stopPropagation();
     setTrailerURL(false);
   };
 
   return (
     <div className="Trailer">
-      <div>
-        <iframe>
-          <source src={trailerURL} />
-        </iframe>
-        <button className="btn btn-danger" onClick={handleClick}>
-          Close
-        </button>
+      <div className="relative-div">
+        <video src={trailerURL} controls />
+        <div className="Trailer__close">
+          <AiOutlineClose
+            onClick={handleClick}
+            className="Trailer__closeIcon"
+          />
+        </div>
       </div>
     </div>
   );
