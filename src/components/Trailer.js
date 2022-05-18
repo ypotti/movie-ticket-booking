@@ -11,11 +11,8 @@ const Trailer = ({ trailerURL, setTrailerURL }) => {
     <div className="Trailer">
       <div className="relative-div">
         <video src={trailerURL} controls />
-        <div className="Trailer__close">
-          <AiOutlineClose
-            onClick={handleClick}
-            className="Trailer__closeIcon"
-          />
+        <div className="Trailer__close" onClick={handleClick}>
+          <AiOutlineClose className="Trailer__closeIcon" />
         </div>
       </div>
     </div>

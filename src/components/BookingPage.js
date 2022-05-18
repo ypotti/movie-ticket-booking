@@ -6,6 +6,7 @@ import {
 } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { getFilmShowTimes, postBooking } from "../services/MovieService";
+import Loading from "./Loading";
 
 const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
   const [cinemaList, setCinemaList] = useState([]);
@@ -27,7 +28,7 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
       setCinemaList(data.cinemas);
       setSelectedCinema(data.cinemas[0]);
     });
-  }, []);
+  }, [selectedDate]);
 
   const incrementTickets = () => {
     setTickets(tickets + 1);
@@ -108,82 +109,91 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
             />
           </div>
         </div>
-
-        <div className="BookingPage__box ps-4 pe-4 pb-4">
-          <div className="m-3 d-flex align-items-center col-md-4">
-            <label className="sub_heading me-3">Date:</label>
-            <input
-              type="date"
-              value={selectedDate}
-              className="form-control text-center date__selector me-3"
-              onChange={(e) => setSelectedDate(e.target.value)}
-            />
-          </div>
-          <div className="ms-3 sub_heading mt-3">Locations</div>
-          <div className="d-flex flex-row cinema__Box">
-            {cinemaList.map((cinema) => (
-              <div
-                key={cinema.locationId}
-                className={`${
-                  selectedCinema.name === cinema.name ? "selected-box" : ""
-                } me-4 ms-4 mb-3 mt-2 p-2 cinema__address`}
-                onClick={() => setSelectedCinema(cinema)}
-              >
-                <div>{cinema.name}</div>
-                <div>{cinema.address.address1}</div>
-                <div>{cinema.address.city}</div>
-                <div>{cinema.address.state}</div>
-                <div>{cinema.address.postalCode}</div>
-              </div>
-            ))}
-          </div>
-          <div className="ms-3 mt-3 sub_heading">Timings</div>
-          {selectedCinema.times && (
-            <div className="d-flex flex-wrap p-3 w-100">
-              {selectedCinema.times.map((time) => (
+        {cinemaList.length === 0 ? (
+          <Loading />
+        ) : (
+          <div className="BookingPage__box ps-4 pe-4 pb-4">
+            <div className="m-3 d-flex align-items-center col-md-4">
+              <label className="sub_heading me-3">Date:</label>
+              <input
+                type="date"
+                value={selectedDate}
+                className="form-control text-center date__selector me-3"
+                onChange={(e) => {
+                  setCinemaList([]);
+                  setSelectedDate(e.target.value);
+                }}
+              />
+            </div>
+            <div className="ms-3 sub_heading mt-3">Locations</div>
+            <div className="d-flex flex-row cinema__Box">
+              {cinemaList.map((cinema) => (
                 <div
-                  key={time.start_time}
+                  key={cinema.locationId}
                   className={`${
-                    time.start_time === selectedTime ? "selected-box" : ""
-                  }  time__box`}
-                  onClick={() => setSelectedTime(time.start_time)}
+                    selectedCinema.name === cinema.name ? "selected-box" : ""
+                  } me-4 ms-4 mb-3 mt-2 p-2 cinema__address`}
+                  onClick={() => {
+                    setSelectedCinema(cinema);
+                    setSelectedTime("");
+                  }}
                 >
-                  {time.start_time}
+                  <div>{cinema.name}</div>
+                  <div>{cinema.address.address1}</div>
+                  <div>{cinema.address.city}</div>
+                  <div>{cinema.address.state}</div>
+                  <div>{cinema.address.postalCode}</div>
                 </div>
               ))}
             </div>
-          )}
-          <div>
-            <div className="ms-3 mt-3 sub_heading">Tickets:</div>
-            <div className="d-flex align-items-center">
-              <div className="d-flex align-items-center mr-5 m-3">
-                <AiFillMinusCircle
-                  className="BookingPage_icon"
-                  onClick={decrementTickets}
-                />
-                <input
-                  type="text"
-                  value={tickets}
-                  className="form-control Tickets__input"
-                  onChange={(e) => setTickets(e.target.value)}
-                />
-
-                <AiFillPlusCircle
-                  className="BookingPage_icon"
-                  onClick={incrementTickets}
-                />
-              </div>
-              <button className="btn btn-danger" onClick={reserveTickets}>
-                Book Now
-              </button>
-            </div>
-            {showError && (
-              <div className="text-danger p-2 ms-3 error">
-                Please select All Fields
+            <div className="ms-3 mt-3 sub_heading">Timings</div>
+            {selectedCinema.times && (
+              <div className="d-flex flex-wrap p-3 w-100">
+                {selectedCinema.times.map((time) => (
+                  <div
+                    key={time.start_time}
+                    className={`${
+                      time.start_time === selectedTime ? "selected-box" : ""
+                    }  time__box`}
+                    onClick={() => setSelectedTime(time.start_time)}
+                  >
+                    {time.start_time}
+                  </div>
+                ))}
               </div>
             )}
+            <div>
+              <div className="ms-3 mt-3 sub_heading">Tickets:</div>
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center mr-5 m-3">
+                  <AiFillMinusCircle
+                    className="BookingPage_icon"
+                    onClick={decrementTickets}
+                  />
+                  <input
+                    type="text"
+                    value={tickets}
+                    className="form-control Tickets__input"
+                    onChange={(e) => setTickets(e.target.value)}
+                  />
+
+                  <AiFillPlusCircle
+                    className="BookingPage_icon"
+                    onClick={incrementTickets}
+                  />
+                </div>
+                <button className="btn btn-danger" onClick={reserveTickets}>
+                  Book Now
+                </button>
+              </div>
+              {showError && (
+                <div className="text-danger p-2 ms-3 error">
+                  Please select All Fields
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

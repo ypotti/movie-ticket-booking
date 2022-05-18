@@ -307,3 +307,17 @@
     height: 1.5rem;
     color: inherit;
 }
+.Loading{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3F599E;
+    font-size: 1.5rem;
+}
+.Loading__icon{
+    width: 50px;
+    color: inherit;
+    height: auto;
+}

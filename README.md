@@ -25,3 +25,7 @@ lot of Backend for our react app. I am using it for Authentication.
 
 Responsive, Customizable Javascript `Popups`. We can use them for notifying User or for
 Double confirmation from users etc. I am Using it for Notifying use about tickets booking status.
+
+### `react-loader-spinner`
+
+A simple React `spinner component` which can be implemented for async await operation before data loads to the view.
