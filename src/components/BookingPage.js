@@ -23,9 +23,10 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
   }
 
   useEffect(() => {
-    let data = getFilmShowTimes().cinemas;
-    setCinemaList(data);
-    setSelectedCinema(data[0]);
+    getFilmShowTimes(selectedMovie.filmId, selectedDate).then((data) => {
+      setCinemaList(data.cinemas);
+      setSelectedCinema(data.cinemas[0]);
+    });
   }, []);
 
   const incrementTickets = () => {
