@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import { getFilmShowTimes, postBooking } from "../services/MovieService";
 import Loading from "./Loading";
 
-const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
+const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
   const [cinemaList, setCinemaList] = useState([]);
   const [selectedCinema, setSelectedCinema] = useState({});
   const [tickets, setTickets] = useState(0);
@@ -85,6 +85,7 @@ const BookingPage = ({ setSelectedMovie, selectedMovie, filters }) => {
         .then((res) => {
           if (res.status === 200) {
             fireAlert("success");
+            setSelectedMovie(null);
           }
         })
         .catch((e) => {
