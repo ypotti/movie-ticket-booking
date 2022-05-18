@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import {
   AiOutlineClose,
   AiFillPlusCircle,
@@ -13,11 +15,12 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
   const [selectedCinema, setSelectedCinema] = useState({});
   const [tickets, setTickets] = useState(0);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(todaysDate());
+  const [selectedDate, setSelectedDate] = useState(
+    changeDateFormat(new Date())
+  );
   const [showError, setShowError] = useState(false);
 
-  function todaysDate() {
-    var now = new Date();
+  function changeDateFormat(now) {
     var day = ("0" + now.getDate()).slice(-2);
     var month = ("0" + (now.getMonth() + 1)).slice(-2);
     return now.getFullYear() + "-" + month + "-" + day;
@@ -94,6 +97,7 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
         });
     }
   };
+  console.log(selectedDate);
 
   return (
     <div className="BookingPage">
@@ -116,13 +120,13 @@ const BookingPage = ({ setSelectedMovie, selectedMovie }) => {
           <div className="BookingPage__box ps-4 pe-4 pb-4">
             <div className="m-3 d-flex align-items-center col-md-4">
               <label className="sub_heading me-3">Date:</label>
-              <input
-                type="date"
+              <DatePicker
+                minDate={new Date()}
                 value={selectedDate}
                 className="form-control text-center date__selector me-3"
                 onChange={(e) => {
                   setCinemaList([]);
-                  setSelectedDate(e.target.value);
+                  setSelectedDate(changeDateFormat(e));
                 }}
               />
             </div>
